@@ -130,7 +130,9 @@
           "name": "aurelia-tree",
           "main": "aurelia-tree",
           "path": "../node_modules/aurelia-tree/dist/commonjs",
-          "resources": ["**/*.{css,html}"]
+          "resources": [
+            "**/*.{css,html}"
+          ]
         }
       ],
       "tutorial": []
