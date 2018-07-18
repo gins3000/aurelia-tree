@@ -5,12 +5,14 @@ import { TreeRoot, TreeNodeData, updateArray, updateObject } from "./au-tree-hel
 export class AuTreeRoot implements TreeRoot {
   @bindable() public data!: TreeNodeData;
   @bindable() public dataChangeCallback = (newData: TreeNodeData) => this.data = newData
+  @bindable() public nodeViewModel?: string;
   public cursorPosition = "";
 
   private selectedNodes = new Set<string>();
   private disposables: Disposable[] = [];
 
   public attached() {
+    // TODO
   }
 
   public detached() {
@@ -51,5 +53,4 @@ export class AuTreeRoot implements TreeRoot {
 
     return updateObject(node, { children: newChildren });
   }
-
 }

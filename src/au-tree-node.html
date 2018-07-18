@@ -3,7 +3,12 @@
         ${children ? 'au-tree__folder' : 'au-tree__leaf'}
         ${selected ? 'au-tree__selected' : ''}
         ${cursorPosition === addressByIndex ? 'au-tree__cursor' : ''}"
-        click.delegate="nodeClicked($event)">${name}</span>
+        click.delegate="nodeClicked($event)">
+    <compose if.bind="nodeViewModel"
+             view-model.bind="nodeViewModel"
+             data.bind="$this"></compose>
+    <span if.bind="!nodeViewModel">${name}</span>
+  </span>
 
   <ul if.bind="children"
       class="au-tree__child-list ${expanded ? 'au-tree__expanded' : 'au-tree__collapsed'}">
@@ -13,6 +18,8 @@
                     selected.bind="child.selected"
                     children.bind="child.children"
                     expanded.bind="child.expanded"
+                    extra-data.bind="child.extraData"
+                    node-view-model.bind="nodeViewModel"
                     cursor-position.bind="cursorPosition"
                     address-by-index.bind="addressByIndex ? addressByIndex+'/'+$index : $index.toString()"
                     address-by-path.bind="addressByPath ? addressByPath+'//'+child.name : child.name"></au-tree-node>

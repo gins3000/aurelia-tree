@@ -10,6 +10,8 @@ export class AuTreeNode implements TreeNodeData {
   @bindable() public name!: string;
   @bindable() public expanded?: boolean;
   @bindable() public selected?: boolean;
+  @bindable() public nodeViewModel?: string;
+  @bindable() public extraData: any;
 
   @bindable() public addressByIndex: string = "";
   @bindable() public addressByPath: string = "";

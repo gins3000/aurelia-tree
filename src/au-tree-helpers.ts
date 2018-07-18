@@ -3,6 +3,7 @@ export interface TreeNodeData {
   children?: TreeNodeData[];
   expanded?: boolean;
   selected?: boolean;
+  extraData?: any
 }
 
 export interface TreeRoot {
