@@ -3,7 +3,7 @@
   &:focus {
     outline: none;
     .au-tree__cursor {
-      background-color: grey;
+      background-color: darken($color: lightblue, $amount: 10%);
     }
   }
   ul {
