@@ -1,0 +1,21 @@
+<template>
+  <span class="au-tree__node ${extraClasses}
+        ${children ? 'au-tree__folder' : 'au-tree__leaf'}
+        ${selected ? 'au-tree__selected' : ''}
+        ${cursorPosition === addressByIndex ? 'au-tree__cursor' : ''}"
+        click.delegate="nodeClicked($event)">${name}</span>
+
+  <ul if.bind="children"
+      class="au-tree__child-list ${expanded ? 'au-tree__expanded' : 'au-tree__collapsed'}">
+    <li repeat.for="child of children">
+      <au-tree-node root.bind="root"
+                    name.bind="child.name"
+                    selected.bind="child.selected"
+                    children.bind="child.children"
+                    expanded.bind="child.expanded"
+                    cursor-position.bind="cursorPosition"
+                    address-by-index.bind="addressByIndex ? addressByIndex+'/'+$index : $index.toString()"
+                    address-by-path.bind="addressByPath ? addressByPath+'//'+child.name : child.name"></au-tree-node>
+    </li>
+  </ul>
+</template>

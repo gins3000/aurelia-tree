@@ -1,0 +1,11 @@
+node_modules
+test/coverage-jest/
+.DS_STORE
+.DS_Store
+.vscode/
+dist/doc-temp
+jspm_packages
+bower_components
+.idea
+*.swp
+npm-debug.log
