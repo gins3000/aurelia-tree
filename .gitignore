@@ -1,4 +1,5 @@
 node_modules
+dist
 test/coverage-jest/
 .DS_STORE
 .DS_Store
