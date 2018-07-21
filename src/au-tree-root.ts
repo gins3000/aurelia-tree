@@ -20,13 +20,16 @@ export class AuTreeRoot implements TreeRoot {
   }
 
   public unselectAll() {
-    this.selectedNodes.forEach((s) => this.updateNode(s, { selected: false }));
+    const newData = Array.from(this.selectedNodes).reduce<TreeNodeData>(
+      (data, s) => this.updateNodeRecursive(data, parseAddress(s), s, { selected: false }),
+      this.data
+    );
     this.selectedNodes.clear();
+    this.dataChangeCallback(newData);
   }
 
   public updateNode(address: string, update: Partial<TreeNodeData>) {
-    const addressArray = (address ? address.split("/") : []).map((a) => parseInt(a, 10));
-    this.dataChangeCallback(this.updateNodeRecursive(this.data, addressArray, address, update));
+    this.dataChangeCallback(this.updateNodeRecursive(this.data, parseAddress(address), address, update));
   }
 
   private updateNodeRecursive(
@@ -53,4 +56,8 @@ export class AuTreeRoot implements TreeRoot {
 
     return updateObject(node, { children: newChildren });
   }
+}
+
+function parseAddress(addressString: string): number[] {
+  return (addressString ? addressString.split("/") : []).map((a) => parseInt(a, 10));
 }
