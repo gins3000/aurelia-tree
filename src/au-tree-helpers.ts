@@ -8,8 +8,8 @@ export interface TreeNodeData {
 
 export interface TreeRoot {
   data: TreeNodeData;
-  unselectAll: () => Promise<void> | void;
-  updateNode: (address: string, update: Partial<TreeNodeData>) => Promise<void> | void;
+  updateData: (data: TreeNodeData) => void;
+  setCursorPosition: (address: string) => void;
 }
 
 export function updateObject<T extends {}>(original: T, ...updates: Partial<T>[]): T {

@@ -1,5 +1,7 @@
 import { containerless, customElement, bindable } from "aurelia-framework";
+
 import { TreeNodeData, TreeRoot } from "./au-tree-helpers";
+import { updateNode, unselectAll } from "./au-tree-operations";
 
 @customElement("au-tree-node")
 @containerless()
@@ -18,8 +20,9 @@ export class AuTreeNode implements TreeNodeData {
 
   public nodeClicked(event: KeyboardEvent) {
     const ctrlPressed = event.ctrlKey;
+    let newData = this.root.data;
     if (!ctrlPressed) {
-      this.root.unselectAll();
+      newData = unselectAll(newData);
     }
 
     const update: Partial<TreeNodeData> = { selected: !this.selected || !ctrlPressed };
@@ -27,6 +30,9 @@ export class AuTreeNode implements TreeNodeData {
       update.expanded = !this.expanded;
     }
 
-    this.root.updateNode(this.addressByIndex, update);
+    newData = updateNode(newData, this.addressByIndex, update);
+
+    this.root.setCursorPosition(this.addressByIndex);
+    this.root.updateData(newData);
   }
 }
