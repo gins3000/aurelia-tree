@@ -53,9 +53,8 @@
     ],
     "testEnvironment": "node",
     "moduleNameMapper": {
-      "src/index.*": "<rootDir>/src/aurelia-tree.ts",
-      ".*src/styles.css": "<rootDir>/dist/commonjs/styles.css",
-      ".*test/unit/src/(.*)": "<rootDir>/src/$1.ts",
+      "src\\\\index": "<rootDir>/src/aurelia-tree.ts",
+      ".*test\\\\unit\\\\src\\\\(.*)": "<rootDir>/src/$1.ts",
       "(test\\\\unit\\\\)aurelia-(.*)": "<rootDir>/node_modules/aurelia-$2",
       "^.+\\.(css)$": "<rootDir>/test/jest-css-stub.js"
     },
