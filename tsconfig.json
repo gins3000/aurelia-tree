@@ -1,31 +1,35 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "declaration": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
     "target": "es5",
     "lib": [
-      "es2017",
+      "es2015",
       "dom"
     ],
-    "outDir": "dist/commonjs",
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "strictNullChecks": true,
-    "declaration": true,
-    "forceConsistentCasingInFileNames": true,
-    "experimentalDecorators": true,
-    "noEmitHelpers": false,
-    "strict": true,
-    "newLine": "LF",
-    "sourceMap": true
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "resolveJsonModule": true,
+    "paths": {
+      "resources": [
+        ""
+      ]
+    },
+    "allowJs": false
   },
-  "exclude": [
-    ".vscode",
-    "dist",
-    "doc",
-    "node_modules",
+  "include": [
+    "src",
+    "dev-app",
     "test"
-  ]
+  ],
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }
