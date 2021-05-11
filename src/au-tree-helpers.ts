@@ -3,7 +3,7 @@ export interface TreeNodeData {
   children?: TreeNodeData[];
   expanded?: boolean;
   selected?: boolean;
-  extraData?: any
+  extraData?: unknown
 }
 
 export interface TreeRoot {
@@ -12,9 +12,9 @@ export interface TreeRoot {
   setCursorPosition: (address: string) => void;
 }
 
-export function updateObject<T extends {}>(original: T, ...updates: Partial<T>[]): T {
+export function updateObject<T extends TreeNodeData>(original: T, ...updates: Partial<T>[]): T {
   return updates.some((u) =>
-    Object.entries(u).some(([k, v]) => (original as any)[k] !== v)
+    Object.entries(u).some(([k, v]) => (original as unknown)[k] !== v)
   ) ? Object.assign(original, ...updates) : original;
 }
 

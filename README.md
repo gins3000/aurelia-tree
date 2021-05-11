@@ -32,7 +32,7 @@ npm run build
 After installing the plugin in your Aurelia project, you can use the component in an Aurelia template like this:
 
 ```html
-<au-tree-root data.bind="data" node-view-model.bind="nodeModule"></au-tree-root>
+<au-tree data.bind="data" node-view-model.bind="nodeModule"></au-tree>
 ```
 
 `data` expects an object matching the interface `TreeNodeData`.

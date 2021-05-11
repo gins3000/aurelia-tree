@@ -1,7 +1,7 @@
 import { containerless, customElement, bindable } from "aurelia-framework";
 
-import { TreeNodeData, TreeRoot } from "./au-tree-helpers";
-import { updateNode, unselectAll } from "./au-tree-operations";
+import { TreeNodeData, TreeRoot } from "../au-tree-helpers";
+import { updateNode, unselectAll } from "../au-tree-operations";
 
 @customElement("au-tree-node")
 @containerless()
@@ -12,13 +12,13 @@ export class AuTreeNode implements TreeNodeData {
   @bindable() public name!: string;
   @bindable() public expanded?: boolean;
   @bindable() public selected?: boolean;
-  @bindable() public extraData: any;
+  @bindable() public extraData: unknown;
 
-  @bindable() public addressByIndex: string = "";
-  @bindable() public addressByPath: string = "";
+  @bindable() public addressByIndex = "";
+  @bindable() public addressByPath = "";
   @bindable() public cursorPosition!: string;
 
-  public nodeClicked(event: KeyboardEvent) {
+  public nodeClicked(event: KeyboardEvent): void {
     const ctrlPressed = event.ctrlKey;
     let newData = this.root.data;
     if (!ctrlPressed) {

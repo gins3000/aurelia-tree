@@ -1,18 +1,18 @@
 import { TreeNodeData, updateArray, updateObject } from "./au-tree-helpers";
 
-export function unselectAll(root: TreeNodeData) {
+export function unselectAll(root: TreeNodeData): TreeNodeData {
   return updateNodes(root, (n) => !!n.selected, { selected: false });
 }
 
-export function expandAll(root: TreeNodeData) {
+export function expandAll(root: TreeNodeData): TreeNodeData {
   return updateNodes(root, (n) => !!n.children && !n.expanded, { expanded: true });
 }
 
-export function collapseAll(root: TreeNodeData) {
+export function collapseAll(root: TreeNodeData): TreeNodeData {
   return updateNodes(root, (n) => !!n.children && !!n.expanded, { expanded: false });
 }
 
-export function updateNode(root: TreeNodeData, address: string, update: Partial<TreeNodeData>) {
+export function updateNode(root: TreeNodeData, address: string, update: Partial<TreeNodeData>): TreeNodeData {
   return updateNodeRecursive(root, parseAddress(address), update);
 }
 
